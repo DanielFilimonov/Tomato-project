@@ -2,8 +2,6 @@ import "./ExploreMenu.css";
 import { menu_list } from "../../assets/assets";
 import { useDispatch, useSelector } from "react-redux";
 
-import store from "../../store/store";
-
 import { filterSet } from "./filtersSlice";
 
 const ExploreMenu = () => {
@@ -20,11 +18,15 @@ const ExploreMenu = () => {
 			<div className="explore-menu-list">
 				{menu_list.map((item, index) => {
 					return (
-						<div key={index} className="explore-menu-list-item">
+						<div
+							onClick={() => {
+								dispatch(filterSet(item.menu_name));
+								console.log(activeFilter);
+							}}
+							 key={index}
+							className="explore-menu-list-item"
+						>
 							<img
-								onClick={() =>
-									dispatch(filterSet(item.category))
-								}
 								className="active"
 								src={item.menu_image}
 								alt=""
