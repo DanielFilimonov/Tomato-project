@@ -1,19 +1,22 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  filters: [],
-  activeFilter: 'All'
-}
+	activeFilter: "all",
+};
 
 const filtersSlice = createSlice({
-  name: 'filters',
-  initialState,
-  reducers: {
-    filterSet: (state, action) => {
-      state.activeFilter = action.payload
-    }
-  }
-})
+	name: "filters",
+	initialState,
+	reducers: {
+		filterSet: (state, action) => {
+			if (state.activeFilter === action.payload) {
+				state.activeFilter = "all";
+			} else {
+				state.activeFilter = action.payload;
+			}
+		},
+	},
+});
 
 const { actions, reducer } = filtersSlice;
 export default reducer;
