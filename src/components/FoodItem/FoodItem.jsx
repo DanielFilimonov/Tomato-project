@@ -3,14 +3,7 @@ import { assets } from "../../assets/assets";
 import { useDispatch } from "react-redux";
 import { addToCart, deleteInCart } from "../../pages/Cart/cartSlice";
 
-const FoodItem = ({
-	id,
-	name,
-	price,
-	description,
-	image,
-	productCount,
-}) => {
+const FoodItem = ({ id, name, price, description, image, productCount }) => {
 	const dispatch = useDispatch();
 	return (
 		<div className="food-item">
@@ -21,7 +14,7 @@ const FoodItem = ({
 						onClick={() =>
 							dispatch(
 								addToCart({
-									_id: id,
+									id,
 									name,
 									image,
 									price,
@@ -35,13 +28,7 @@ const FoodItem = ({
 				) : (
 					<div className="food-item-counter">
 						<img
-							onClick={() =>
-								dispatch(
-									deleteInCart({
-										_id: id,
-									})
-								)
-							}
+							onClick={() => dispatch(deleteInCart(id))}
 							src={assets.remove_icon_red}
 							alt=""
 						/>
@@ -50,7 +37,7 @@ const FoodItem = ({
 							onClick={() =>
 								dispatch(
 									addToCart({
-										_id: id,
+										id,
 										name,
 										image,
 										price,

@@ -2,7 +2,7 @@ import React from 'react'
 import "./Header.css";
 const Header = () => {
   return (
-		<div className="header">
+		<div className="header section" id="home">
 			<div className="header-contents">
 				<h2>Order your favorite food here</h2>
 				<p>
@@ -11,8 +11,8 @@ const Header = () => {
 					expertise. Our mission is to satisfy your cravings and
 					elevate your dining experience, one delicious meal at a
 					time.
-        </p>
-        <button>View Menu</button>
+				</p>
+				<button>View Menu</button>
 			</div>
 		</div>
   );

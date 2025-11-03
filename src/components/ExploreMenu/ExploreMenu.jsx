@@ -34,7 +34,7 @@ const ExploreMenu = () => {
 	);
 
 	return (
-		<div className="explore-menu" id="explore-menu">
+		<div className="explore-menu section" id="menu">
 			<h1>Explore our menu</h1>
 			<p className="explore-menu-text">
 				Choose from a diverse menu featuring a delectable array of

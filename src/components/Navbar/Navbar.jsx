@@ -1,11 +1,10 @@
-import { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { assets } from "../../assets/assets";
 import "./Navbar.css";
 
-const Navbar = () => {
-	const [menu, setMenu] = useState("home");
+const Navbar = ({ setShowLogin, activeSection }) => {
+
 	const cart = useSelector((state) => state.cart);
 
 	const divDotClass = Object.keys(cart).length > 0 ? "dot" : "";
@@ -18,29 +17,41 @@ const Navbar = () => {
 			<ul className="navbar-menu">
 				<Link to="/">
 					<li
-						onClick={() => setMenu("home")}
-						className={menu === "home" ? "active" : ""}
+						className={`menu-item ${
+							activeSection === "home" ? "actigte" : ""
+						}`}
 					>
-						home
+						<a className="menu-item-link" href="#home">
+							home
+						</a>
 					</li>
 				</Link>
 				<li
-					onClick={() => setMenu("menu")}
-					className={menu === "menu" ? "active" : ""}
+					className={`menu-item ${
+						activeSection === "menu" ? "active" : ""
+					}`}
 				>
-					menu
+					<a className="menu-item-link" href="#menu">
+						menu
+					</a>
 				</li>
 				<li
-					onClick={() => setMenu("mobile-app")}
-					className={menu === "mobile-app" ? "active" : ""}
+					className={`menu-item ${
+						activeSection === "mobile-app" ? "active" : ""
+					}`}
 				>
-					mobile-app
+					<a className="menu-item-link" href="#mobile-app">
+						mobile-app
+					</a>
 				</li>
 				<li
-					onClick={() => setMenu("contact-us")}
-					className={menu === "contact-us" ? "active" : ""}
+					className={`menu-item ${
+						activeSection === "contact-us" ? "active" : ""
+					}`}
 				>
-					cntact us
+					<a className="menu-item-link" href="#contact-us">
+						contact us
+					</a>
 				</li>
 			</ul>
 			<div className="navbar-right">
@@ -51,7 +62,7 @@ const Navbar = () => {
 					</Link>
 					<div className={divDotClass}></div>
 				</div>
-				<button>sign in</button>
+				<button onClick={() => setShowLogin(true)}>sign in</button>
 			</div>
 		</div>
 	);

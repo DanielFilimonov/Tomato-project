@@ -33,7 +33,7 @@ const FoodDisplay = () => {
 	);
 
 	return (
-		<div className="food-display" id="food-display">
+		<div className="food-display " id="food-display">
 			<h2>Top dishes near you</h2>
 			{foodDisplayListRender(food_list)}
 		</div>

@@ -7,7 +7,7 @@ const cartSlice = createSlice({
 	initialState,
 	reducers: {
 		addToCart: (state, action) => {
-			const { _id: id, name, image, price } = action.payload;
+			const { id, name, image, price } = action.payload;
 
 			if (!state[id]) {
 				state[id] = { id, name, image, price, qnty: 1 };
@@ -16,8 +16,9 @@ const cartSlice = createSlice({
 			}
 		},
 		deleteInCart: (state, action) => {
-			const { _id: id } = action.payload;
-			state[id].qnty > 1 ? (state[id].qnty -= 1) : delete state[id];
+			state[action.payload].qnty > 1
+				? (state[action.payload].qnty -= 1)
+				: delete state[action.payload];
 		},
 		removeFromCart: (state, action) => {
 			delete state[action.payload];

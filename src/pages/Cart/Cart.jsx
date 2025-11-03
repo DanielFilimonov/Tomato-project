@@ -4,7 +4,18 @@ import "./Cart.css";
 const Cart = () => {
 	const cart = useSelector((state) => state.cart);
 	const dispatch = useDispatch();
-	console.log(Object.values(cart));
+
+	const getTotalPrice = () => {
+		if (Object.values(cart).length > 0) {
+			return Object.values(cart).reduce(
+				(accumulator, product) =>
+					accumulator + product.price * product.qnty,
+				0
+			);
+		}
+		 else return 0
+	};
+
 	return (
 		<div className="cart">
 			<div className="cart-items">
@@ -18,17 +29,17 @@ const Cart = () => {
 				</div>
 				<br />
 				<hr />
-				{Object.values(cart).map((item) => (
-					<div key={item.id}>
+				{Object.values(cart).map((product) => (
+					<div key={product.id}>
 						<div className="cart-items-title cart-items-item">
-							<img src={item.image} alt="" />
-							<p>{item.name}</p>
-							<p>${item.price}</p>
-							<p>{item.qnty}</p>
-							<p>${item.price * item.qnty}</p>
+							<img src={product.image} alt="" />
+							<p>{product.name}</p>
+							<p>${product.price}</p>
+							<p>{product.qnty}</p>
+							<p>${product.price * product.qnty}</p>
 							<p
 								onClick={() =>
-									dispatch(removeFromCart(item.id))
+									dispatch(removeFromCart(product.id))
 								}
 								className="cross"
 							>
@@ -45,17 +56,17 @@ const Cart = () => {
 					<div>
 						<div className="cart-total-details">
 							<p>Subtotal</p>
-							<p>{0}</p>
+							<p>${getTotalPrice()}</p>
 						</div>
 						<hr />
 						<div className="cart-total-details">
-							<p>Delivery Free</p>
-							<p>{2}</p>
+							<p>Delivery Fee</p>
+							<p>${2}</p>
 						</div>
 						<hr />
 						<div className="cart-total-details">
 							<b>Total</b>
-							<b>{0}</b>
+							<b>${getTotalPrice() + 2}</b>
 						</div>
 					</div>
 					<button>PROCEED TO CHEAKOUT</button>
@@ -64,8 +75,8 @@ const Cart = () => {
 					<div>
 						<p>If you have a promo code, Enter it here </p>
 						<div className="cart-promocode-input">
-              <input type="text" placeholder="promo code" />
-              <button>Submit</button>
+							<input type="text" placeholder="promo code" />
+							<button>Submit</button>
 						</div>
 					</div>
 				</div>
