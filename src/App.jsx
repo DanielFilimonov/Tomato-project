@@ -9,37 +9,37 @@ import { Routes, Route, useLocation } from "react-router-dom";
 
 const App = () => {
 	const [showLogin, setShowLogin] = useState(false);
-	const [activeSection, setActiveSection] = useState("menu");
+	// const [activeSection, setActiveSection] = useState("menu");
 
-    const { hash } = useLocation();
+  //   const { hash } = useLocation();
 
 	
-	useEffect(() => {
-		const sections = document.querySelectorAll(".section");
+	// useEffect(() => {
+	// 	const sections = document.querySelectorAll(".section");
 
-		const observer = new IntersectionObserver(
-			(entries) => {
-				entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        const newSection = entry.target.id;
-                        setActiveSection(newSection);
+	// 	const observer = new IntersectionObserver(
+	// 		(entries) => {
+	// 			entries.forEach((entry) => {
+  //                   if (entry.isIntersecting) {
+  //                       const newSection = entry.target.id;
+  //                       setActiveSection(newSection);
                         
-                        const newHash = `#${newSection}`;
+  //                       const newHash = `#${newSection}`;
                         
-						if (window.location.hash !== newHash) {
-							window.history.replaceState(null, "", newHash);
-						}
-					}
-				});
-			},
-			{
-				threshold: 0.8,
-				// rootMargin: "-40px 0px 0px 0px",
-			}
-		);
+	// 					if (window.location.hash !== newHash) {
+	// 						window.history.replaceState(null, "", newHash);
+	// 					}
+	// 				}
+	// 			});
+	// 		},
+	// 		{
+	// 			threshold: 0.8,
+	// 			// rootMargin: "-40px 0px 0px 0px",
+	// 		}
+	// 	);
 
-		sections.forEach((section) => observer.observe(section));
-	}, [hash]);
+	// 	sections.forEach((section) => observer.observe(section));
+	// }, [hash]);
 
 	return (
 		<>
@@ -47,7 +47,7 @@ const App = () => {
 			<div className="app">
 				<Navbar
 					setShowLogin={setShowLogin}
-					activeSection={activeSection}
+					// activeSection={activeSection}
 				/>
 				<Routes>
 					<Route path="/" element={<Home />} />

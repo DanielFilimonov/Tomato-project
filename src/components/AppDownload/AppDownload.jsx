@@ -1,9 +1,24 @@
-import React from 'react'
-import './AppDownload.css'
-import { assets } from '../../assets/assets';
+import { activeSectionSet } from "../../store/activeSectionSlice";
+import { useDispatch } from "react-redux";
+import { useInView } from "react-intersection-observer";
+import { useEffect } from "react";
+
+import "./AppDownload.css";
+import { assets } from "../../assets/assets";
 const AppDownload = () => {
-  return (
-		<div className="app-download section" id="mobile-app">
+	const { ref, inView } = useInView({
+		threshold: 0.95,
+		rootMargin: "-10% 0px 0px 0px",
+	});
+		const dispatch = useDispatch();
+
+		useEffect(() => {
+			if (inView) {
+				dispatch(activeSectionSet("mobile-app"));
+			}
+		}, [inView]);
+	return (
+		<div className="app-download" ref={ref} id="mobile-app">
 			<h3>
 				For Better Experience Download <br /> Tomato App
 			</h3>
@@ -17,7 +32,7 @@ const AppDownload = () => {
 				<img src={assets.app_store} alt="" />
 			</div>
 		</div>
-  );
-}
+	);
+};
 
-export default AppDownload
+export default AppDownload;

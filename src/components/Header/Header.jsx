@@ -1,8 +1,21 @@
-import React from 'react'
+import { activeSectionSet } from "../../store/activeSectionSlice";
+import { useDispatch } from "react-redux";
+import { useInView } from "react-intersection-observer";
+import { useEffect } from "react";
 import "./Header.css";
+
 const Header = () => {
-  return (
-		<div className="header section" id="home">
+	const { ref, inView } = useInView({ threshold: 0.8 });
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		if (inView) {
+			dispatch(activeSectionSet("home"));
+		}
+	}, [inView]);
+
+	return (
+		<div className="header" ref={ref} id="home">
 			<div className="header-contents">
 				<h2>Order your favorite food here</h2>
 				<p>
@@ -15,7 +28,7 @@ const Header = () => {
 				<button>View Menu</button>
 			</div>
 		</div>
-  );
-}
+	);
+};
 
 export default Header;

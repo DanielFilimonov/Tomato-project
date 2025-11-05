@@ -4,8 +4,9 @@ import { Link, useLocation } from "react-router-dom";
 import { assets } from "../../assets/assets";
 import "./Navbar.css";
 
-const Navbar = ({ setShowLogin, activeSection }) => {
+const Navbar = ({ setShowLogin }) => {
 	const cart = useSelector((state) => state.cart);
+	const {activeSection} = useSelector((state) => state.activeSection);
 
 	const location = useLocation();
 	const hash = location.hash;
@@ -33,14 +34,14 @@ const Navbar = ({ setShowLogin, activeSection }) => {
 						isAtHomePage && activeSection === "home" ? "active" : ""
 					}`}
 				>
-					<Link to="/#home">Home</Link>
+					<Link to="/#home">home</Link>
 				</li>
 				<li
 					className={`${
 						isAtHomePage && activeSection === "menu" ? "active" : ""
 					}`}
 				>
-					<Link to="/#menu">Menu</Link>
+					<Link to="/#menu">menu</Link>
 				</li>
 				<li
 					className={`${
@@ -49,7 +50,7 @@ const Navbar = ({ setShowLogin, activeSection }) => {
 							: ""
 					}`}
 				>
-					<Link to="/#mobile-app">Downoad App</Link>
+					<Link to="/#mobile-app">mobile-app</Link>
 				</li>
 				<li
 					className={`${
@@ -58,7 +59,7 @@ const Navbar = ({ setShowLogin, activeSection }) => {
 							: ""
 					}`}
 				>
-					<Link to="/#contact-us">Contact Us</Link>
+					<Link to="/#contact-us">contact us</Link>
 				</li>
 			</ul>
 			<div className="navbar-right">

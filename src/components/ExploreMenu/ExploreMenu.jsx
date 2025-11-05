@@ -1,14 +1,26 @@
+import { activeSectionSet } from "../../store/activeSectionSlice";
+import { useDispatch } from "react-redux";
+import { useInView } from "react-intersection-observer";
+import { useEffect } from "react";
+
 import "./ExploreMenu.css";
 import { menu_list } from "../../assets/assets";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import classNames from "classnames";
 import { filterSet } from "./filtersSlice";
 
 const ExploreMenu = () => {
-    const dispatch = useDispatch();
-    
-    const { activeFilter } = useSelector((state) => state.filters);
-    
+			const { ref, inView } = useInView({ threshold: 0.9 });
+			const dispatch = useDispatch();
+
+			useEffect(() => {
+				if (inView) {
+					dispatch(activeSectionSet("menu"));
+				}
+			}, [inView]);
+	
+	const { activeFilter } = useSelector((state) => state.filters);
+
 	const rendermenuList = (menuDataArr) => (
 		<div className="explore-menu-list">
 			{menuDataArr.map((item, index) => {
@@ -34,7 +46,7 @@ const ExploreMenu = () => {
 	);
 
 	return (
-		<div className="explore-menu section" id="menu">
+		<div className="explore-menu section" ref={ref} id="menu">
 			<h1>Explore our menu</h1>
 			<p className="explore-menu-text">
 				Choose from a diverse menu featuring a delectable array of
