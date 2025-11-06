@@ -2,6 +2,7 @@ import { activeSectionSet } from "../../store/activeSectionSlice";
 import { useDispatch } from "react-redux";
 import { useInView } from "react-intersection-observer";
 import { useEffect } from "react";
+import { useSectionInView } from "../../hooks/useSectionInView";
 
 import "./ExploreMenu.css";
 import { menu_list } from "../../assets/assets";
@@ -10,15 +11,8 @@ import classNames from "classnames";
 import { filterSet } from "./filtersSlice";
 
 const ExploreMenu = () => {
-			const { ref, inView } = useInView({ threshold: 0.9 });
-			const dispatch = useDispatch();
-
-			useEffect(() => {
-				if (inView) {
-					dispatch(activeSectionSet("menu"));
-				}
-			}, [inView]);
-	
+	const { ref } = useSectionInView({ sectionName: "menu", threshold: 0.9 });
+	  const dispatch = useDispatch();
 	const { activeFilter } = useSelector((state) => state.filters);
 
 	const rendermenuList = (menuDataArr) => (

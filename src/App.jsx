@@ -47,7 +47,6 @@ const App = () => {
 			<div className="app">
 				<Navbar
 					setShowLogin={setShowLogin}
-					// activeSection={activeSection}
 				/>
 				<Routes>
 					<Route path="/" element={<Home />} />

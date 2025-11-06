@@ -2,18 +2,15 @@ import { activeSectionSet } from "../../store/activeSectionSlice";
 import { useDispatch } from "react-redux";
 import { useInView } from "react-intersection-observer";
 import { useEffect } from "react";
+import { useSectionInView } from "../../hooks/useSectionInView";
 
 import "./Footer.css";
 import { assets } from "../../assets/assets";
 const Footer = () => {
-	const { ref, inView } = useInView({ threshold: 0.95 });
-	const dispatch = useDispatch();
-
-	useEffect(() => {
-		if (inView) {
-			dispatch(activeSectionSet("contact-us"));
-		}
-	}, [inView]);
+	const { ref } = useSectionInView({
+		sectionName: "contact-us",
+		threshold: 0.95,
+	});
 
 	return (
 		<div className="footer section" ref={ref} id="contact-us">

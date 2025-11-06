@@ -2,21 +2,18 @@ import { activeSectionSet } from "../../store/activeSectionSlice";
 import { useDispatch } from "react-redux";
 import { useInView } from "react-intersection-observer";
 import { useEffect } from "react";
+import { useSectionInView } from "../../hooks/useSectionInView";
 
 import "./AppDownload.css";
 import { assets } from "../../assets/assets";
+
 const AppDownload = () => {
-	const { ref, inView } = useInView({
+	const { ref } = useSectionInView({
+		sectionName: "mobile-app",
 		threshold: 0.95,
 		rootMargin: "-10% 0px 0px 0px",
 	});
-		const dispatch = useDispatch();
 
-		useEffect(() => {
-			if (inView) {
-				dispatch(activeSectionSet("mobile-app"));
-			}
-		}, [inView]);
 	return (
 		<div className="app-download" ref={ref} id="mobile-app">
 			<h3>

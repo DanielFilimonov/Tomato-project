@@ -2,6 +2,7 @@ import { activeSectionSet } from "../../store/activeSectionSlice";
 import { useDispatch } from "react-redux";
 import { useInView } from "react-intersection-observer";
 import { useEffect } from "react";
+import { useSectionInView } from "../../hooks/useSectionInView";
 
 import "./FoodDisplay.css";
 import { food_list } from "../../assets/assets";
@@ -9,14 +10,8 @@ import FoodItem from "../FoodItem/FoodItem";
 import { useSelector } from "react-redux";
 
 const FoodDisplay = () => {
-				const { ref, inView } = useInView({ threshold: 0.2 });
-				const dispatch = useDispatch();
+	const { ref } = useSectionInView({ sectionName: "menu", threshold: 0.2 });
 
-				useEffect(() => {
-					if (inView) {
-						dispatch(activeSectionSet("menu"));
-					}
-				}, [inView]);
 	const { activeFilter } = useSelector((state) => state.filters);
 	const cart = useSelector((state) => state.cart);
 

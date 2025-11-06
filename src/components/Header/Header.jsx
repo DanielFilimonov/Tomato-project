@@ -3,16 +3,15 @@ import { useDispatch } from "react-redux";
 import { useInView } from "react-intersection-observer";
 import { useEffect } from "react";
 import "./Header.css";
+import { useSectionInView } from "../../hooks/useSectionInView";
 
 const Header = () => {
-	const { ref, inView } = useInView({ threshold: 0.8 });
-	const dispatch = useDispatch();
-
-	useEffect(() => {
-		if (inView) {
-			dispatch(activeSectionSet("home"));
-		}
-	}, [inView]);
+	const { ref } = useSectionInView({
+		sectionName: "home",
+		threshold: 0.8,
+		rootMargin: "-10% 0px 0px 0px",
+	});
+		
 
 	return (
 		<div className="header" ref={ref} id="home">
