@@ -1,55 +1,27 @@
+import { useState } from "react";
+import { Routes, Route } from "react-router-dom";
+
 import Footer from "./components/Footer/Footer";
 import LogginPopup from "./components/LogginPopup/LogginPopup";
 import Navbar from "./components/Navbar/Navbar";
 import Cart from "./pages/Cart/Cart";
 import Home from "./pages/Home/Home";
 import ScrollToTop from "./components/utils/ScrollToTop";
-import { useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import PlaceOrder from "./pages/PlaceOrder/PlaceOrder";
 
 const App = () => {
 	const [showLogin, setShowLogin] = useState(false);
-	// const [activeSection, setActiveSection] = useState("menu");
-
-	//   const { hash } = useLocation();
-
-	// useEffect(() => {
-	// 	const sections = document.querySelectorAll(".section");
-
-	// 	const observer = new IntersectionObserver(
-	// 		(entries) => {
-	// 			entries.forEach((entry) => {
-	//                   if (entry.isIntersecting) {
-	//                       const newSection = entry.target.id;
-	//                       setActiveSection(newSection);
-
-	//                       const newHash = `#${newSection}`;
-
-	// 					if (window.location.hash !== newHash) {
-	// 						window.history.replaceState(null, "", newHash);
-	// 					}
-	// 				}
-	// 			});
-	// 		},
-	// 		{
-	// 			threshold: 0.8,
-	// 			// rootMargin: "-40px 0px 0px 0px",
-	// 		}
-	// 	);
-
-	// 	sections.forEach((section) => observer.observe(section));
-	// }, [hash]);
 
 	return (
 		<>
 			<ScrollToTop />
 			{showLogin ? <LogginPopup setShowLogin={setShowLogin} /> : <></>}
-
 			<Navbar setShowLogin={setShowLogin} />
 			<div className="app">
 				<Routes>
 					<Route path="/" element={<Home />} />
 					<Route path="/cart" element={<Cart />} />
+					<Route path="/order" element={<PlaceOrder />} />
 				</Routes>
 			</div>
 			<Footer />

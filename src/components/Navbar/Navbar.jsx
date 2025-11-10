@@ -1,21 +1,24 @@
-import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+
+import { selectCartProducts } from "../../pages/Cart/cartSlice";
+import { selectActiveSection } from "../../store/activeSectionSlice";
 import { assets } from "../../assets/assets";
 import "./Navbar.css";
 
 const Navbar = ({ setShowLogin }) => {
 	const [isScrolled, setIsScrolled] = useState(false);
 
-	const cart = useSelector((state) => state.cart);
-	const { activeSection } = useSelector((state) => state.activeSection);
+	const cart = useSelector(selectCartProducts);
+	const { activeSection } = useSelector(selectActiveSection);
 
 	const location = useLocation();
 	const navigate = useNavigate();
 	const hash = location.hash;
 	const isAtHomePage = location.pathname === "/";
 
-	
+
 	const handleClick = () => {
 		if (isAtHomePage) {
 			window.scrollTo({

@@ -1,11 +1,8 @@
-import { activeSectionSet } from "../../store/activeSectionSlice";
-import { useDispatch } from "react-redux";
-import { useInView } from "react-intersection-observer";
-import { useEffect } from "react";
 import { useSectionInView } from "../../hooks/useSectionInView";
 
-import "./Footer.css";
 import { assets } from "../../assets/assets";
+import "./Footer.css";
+
 const Footer = () => {
 	const { ref } = useSectionInView({
 		sectionName: "contact-us",

@@ -1,19 +1,15 @@
-import { activeSectionSet } from "../../store/activeSectionSlice";
-import { useDispatch } from "react-redux";
-import { useInView } from "react-intersection-observer";
-import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useSectionInView } from "../../hooks/useSectionInView";
-
-import "./ExploreMenu.css";
-import { menu_list } from "../../assets/assets";
-import { useSelector } from "react-redux";
 import classNames from "classnames";
-import { filterSet } from "./filtersSlice";
+
+import { filterSet, selectFilters } from "./filtersSlice";
+import { menu_list } from "../../assets/assets";
+import "./ExploreMenu.css";
 
 const ExploreMenu = () => {
 	const { ref } = useSectionInView({ sectionName: "menu", threshold: 0.9 });
-	  const dispatch = useDispatch();
-	const { activeFilter } = useSelector((state) => state.filters);
+	const dispatch = useDispatch();
+	const { activeFilter } = useSelector(selectFilters);
 
 	const rendermenuList = (menuDataArr) => (
 		<div className="explore-menu-list">

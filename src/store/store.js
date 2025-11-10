@@ -1,7 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
+
 import filters from '../components/ExploreMenu/filtersSlice'
 import cart from '../pages/Cart/cartSlice'
 import activeSection from './activeSectionSlice'
+
 const stringMiddleware = () => (next) => (action) => {
   if (typeof action === "string") {
     return next({

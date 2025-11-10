@@ -1,11 +1,6 @@
-import { activeSectionSet } from "../../store/activeSectionSlice";
-import { useDispatch } from "react-redux";
-import { useInView } from "react-intersection-observer";
-import { useEffect } from "react";
 import { useSectionInView } from "../../hooks/useSectionInView";
-
-import "./AppDownload.css";
 import { assets } from "../../assets/assets";
+import "./AppDownload.css";
 
 const AppDownload = () => {
 	const { ref } = useSectionInView({

@@ -1,20 +1,30 @@
 import { useSelector, useDispatch } from "react-redux";
-import { removeFromCart } from "./cartSlice";
-import "./Cart.css";
-const Cart = () => {
-	const cart = useSelector((state) => state.cart);
-	const dispatch = useDispatch();
+import { Link, useNavigate } from "react-router-dom";
 
-	const getTotalPrice = () => {
-		if (Object.values(cart).length > 0) {
-			return Object.values(cart).reduce(
-				(accumulator, product) =>
-					accumulator + product.price * product.qnty,
-				0
-			);
-		}
-		 else return 0
-	};
+import {
+	removeFromCart,
+	selectCartProducts,
+	selectTotalAmount,
+} from "./cartSlice";
+import "./Cart.css";
+
+const Cart = () => {
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
+
+	const cart = useSelector(selectCartProducts);
+	const totalPrice = useSelector(selectTotalAmount);
+
+	if (!Object.keys(cart).length) {
+		return (
+			<div className="cart-empty">
+				<h1 className="cart-empty-title">Your cart is still empty.</h1>
+				<Link className="cart-empty-link" to="/">
+					Continue shopping.
+				</Link>
+			</div>
+		);
+	}
 
 	return (
 		<div className="cart" id="cart">
@@ -56,7 +66,7 @@ const Cart = () => {
 					<div>
 						<div className="cart-total-details">
 							<p>Subtotal</p>
-							<p>${getTotalPrice()}</p>
+							<p>${totalPrice}</p>
 						</div>
 						<hr />
 						<div className="cart-total-details">
@@ -66,10 +76,12 @@ const Cart = () => {
 						<hr />
 						<div className="cart-total-details">
 							<b>Total</b>
-							<b>${getTotalPrice() + 2}</b>
+							<b>${totalPrice + 2}</b>
 						</div>
 					</div>
-					<button>PROCEED TO CHEAKOUT</button>
+					<button onClick={() => navigate("/order")}>
+						PROCEED TO CHEAKOUT
+					</button>
 				</div>
 				<div className="cart-promocode">
 					<div>

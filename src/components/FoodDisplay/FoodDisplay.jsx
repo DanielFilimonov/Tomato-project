@@ -1,19 +1,16 @@
-import { activeSectionSet } from "../../store/activeSectionSlice";
-import { useDispatch } from "react-redux";
-import { useInView } from "react-intersection-observer";
-import { useEffect } from "react";
-import { useSectionInView } from "../../hooks/useSectionInView";
+import { useSelector } from "react-redux";
 
-import "./FoodDisplay.css";
+import { selectFilters } from "../ExploreMenu/filtersSlice";
+import { selectCartProducts } from "../../pages/Cart/cartSlice";
+import { useSectionInView } from "../../hooks/useSectionInView";
 import { food_list } from "../../assets/assets";
 import FoodItem from "../FoodItem/FoodItem";
-import { useSelector } from "react-redux";
+import "./FoodDisplay.css";
 
 const FoodDisplay = () => {
 	const { ref } = useSectionInView({ sectionName: "menu", threshold: 0.2 });
-
-	const { activeFilter } = useSelector((state) => state.filters);
-	const cart = useSelector((state) => state.cart);
+	const { activeFilter } = useSelector(selectFilters);
+	const cart = useSelector(selectCartProducts);
 
 	const getProductCount = (id) => {
 		return cart[id]?.qnty || 0;

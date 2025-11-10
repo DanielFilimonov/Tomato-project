@@ -1,7 +1,8 @@
-import "./FoodItem.css";
-import { assets } from "../../assets/assets";
 import { useDispatch } from "react-redux";
+
 import { addToCart, deleteInCart } from "../../pages/Cart/cartSlice";
+import { assets } from "../../assets/assets";
+import "./FoodItem.css";
 
 const FoodItem = ({ id, name, price, description, image, productCount }) => {
 	const dispatch = useDispatch();

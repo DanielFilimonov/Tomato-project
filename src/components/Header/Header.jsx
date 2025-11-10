@@ -1,9 +1,5 @@
-import { activeSectionSet } from "../../store/activeSectionSlice";
-import { useDispatch } from "react-redux";
-import { useInView } from "react-intersection-observer";
-import { useEffect } from "react";
-import "./Header.css";
 import { useSectionInView } from "../../hooks/useSectionInView";
+import "./Header.css";
 
 const Header = () => {
 	const { ref } = useSectionInView({
@@ -11,7 +7,6 @@ const Header = () => {
 		threshold: 0.8,
 		rootMargin: "-10% 0px 0px 0px",
 	});
-		
 
 	return (
 		<div className="header" ref={ref} id="home">

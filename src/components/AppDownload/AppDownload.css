@@ -4,51 +4,54 @@
 	font-size: max(3vw, 20px);
 	text-align: center;
 	font-weight: 500;
-    scroll-margin-top: 120px;
+	scroll-margin-top: 120px;
 }
 
 .app-download h3 {
-    font-size: max(3vw, 20px);
-    text-align: center;
-    font-weight: 500;
+	font-size: max(3vw, 20px);
+	text-align: center;
+	font-weight: 500;
 }
 
 .app-download-platforms {
-  display: flex;
-  justify-content: center;
-  gap: max(2vw,10px);
-  margin-top: 40px;
+	display: flex;
+	justify-content: center;
+	gap: max(2vw, 10px);
+	margin-top: 40px;
 }
-.app-download-platforms img{
-  width: max(30vw, 120px);
-  max-width: 180px;
-  transition: 0.5s;
-  cursor: pointer;
+
+.app-download-platforms img {
+	width: max(30vw, 120px);
+	max-width: 180px;
+	transition: 0.5s;
+	cursor: pointer;
 }
-.app-download-platforms img:hover{
- transform: scale(1.05);
+
+.app-download-platforms img:hover {
+	transform: scale(1.05);
 }
 
 .app-download__text {
-    padding-top: 25px;
-    font-size: 16px;
-    max-width: 60%;
-    margin: 0 auto;
-    color: #676767;
-    font-weight: 400;
+	padding-top: 25px;
+	font-size: 16px;
+	max-width: 60%;
+	margin: 0 auto;
+	color: #676767;
+	font-weight: 400;
 }
-@media (max-width: 1000px) {
-    .app-download__text {
-        max-width: 80%;
-    }
 
-    .app-download h3 {
-        font-size: 26px;
-    }
+@media (max-width: 1000px) {
+	.app-download__text {
+		max-width: 80%;
+	}
+
+	.app-download h3 {
+		font-size: 26px;
+	}
 }
 
 @media (max-width: 650px) {
-    .app-download__text {
-        max-width: 100%;
-    }
+	.app-download__text {
+		max-width: 100%;
+	}
 }
