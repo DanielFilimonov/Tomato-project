@@ -19,7 +19,7 @@ export const useSectionInView = ({
 		if (inView) {
 			dispatch(activeSectionSet(sectionName));
 		}
-	}, [inView]);
+	}, [inView, dispatch, sectionName]);
 
 	return { ref, inView };
 };
