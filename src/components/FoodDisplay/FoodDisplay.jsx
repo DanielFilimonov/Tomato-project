@@ -18,9 +18,10 @@ const FoodDisplay = () => {
 
 	const foodDisplayListRender = (foodListDataArr) => (
 		<div className="food-display-list">
-			{foodListDataArr.map((item) => {
-				if (activeFilter === "all" || activeFilter === item.category) {
-					return (
+			{foodListDataArr.map(
+				(item) =>
+					(activeFilter === "all" ||
+						activeFilter === item.category) && (
 						<FoodItem
 							key={item._id}
 							id={item._id}
@@ -31,9 +32,8 @@ const FoodDisplay = () => {
 							image={item.image}
 							productCount={getProductCount(item._id)}
 						/>
-					);
-				}
-			})}
+					)
+			)}
 		</div>
 	);
 

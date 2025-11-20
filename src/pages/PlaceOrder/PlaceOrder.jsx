@@ -50,7 +50,7 @@ const PlaceOrder = () => {
 				phone: "",
 			}}
 			validationSchema={orderSchema}
-			onSubmit={(values, { resetForm }) => {
+			onSubmit={({ resetForm }) => {
 				alert(
 					"Это демонстрационная версия, оформление доставки недоступно."
 				);
