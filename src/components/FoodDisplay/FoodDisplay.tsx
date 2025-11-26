@@ -1,22 +1,35 @@
-import { useSelector } from "react-redux";
+import React, { JSX } from "react";
 
+import { useAppSelector } from "../../hooks/useTypeScriptHook";
 import { selectFilters } from "../ExploreMenu/filtersSlice";
 import { selectCartProducts } from "../../pages/Cart/cartSlice";
 import { useSectionInView } from "../../hooks/useSectionInView";
 import { food_list } from "../../assets/assets";
 import FoodItem from "../FoodItem/FoodItem";
+
 import "./FoodDisplay.css";
 
-const FoodDisplay = () => {
-	const { ref } = useSectionInView({ sectionName: "menu", threshold: 0.2 });
-	const { activeFilter } = useSelector(selectFilters);
-	const cart = useSelector(selectCartProducts);
+interface IFoodList {
+	_id: string;
+	name: string;
+	category: string;
+	description: string;
+	price: number;
+	image: string;
+}
 
-	const getProductCount = (id) => {
+const FoodDisplay: React.FC = () => {
+	const { ref } = useSectionInView({ sectionName: "menu", threshold: 0.2 });
+	const { activeFilter } = useAppSelector(selectFilters);
+	const cart = useAppSelector(selectCartProducts);
+
+	const getProductCount = (id: string) => {
 		return cart[id]?.qnty || 0;
 	};
 
-	const foodDisplayListRender = (foodListDataArr) => (
+	const foodDisplayListRender = (
+		foodListDataArr: IFoodList[]
+	): JSX.Element => (
 		<div className="food-display-list">
 			{foodListDataArr.map(
 				(item) =>

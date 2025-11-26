@@ -1,23 +1,26 @@
-import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { JSX, useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
+import { useAppSelector } from "../../hooks/useTypeScriptHook";
 import { selectCartProducts } from "../../pages/Cart/cartSlice";
 import { selectActiveSection } from "../../store/activeSectionSlice";
 import { assets } from "../../assets/assets";
 import "./Navbar.css";
 
-const Navbar = ({ setShowLogin }) => {
+interface ILogginPopupProps {
+	setShowLogin: (value: boolean) => void;
+}
+
+const Navbar = ({ setShowLogin }: ILogginPopupProps): JSX.Element => {
 	const [isScrolled, setIsScrolled] = useState(false);
 
-	const cart = useSelector(selectCartProducts);
-	const { activeSection } = useSelector(selectActiveSection);
+	const cart = useAppSelector(selectCartProducts);
+	const { activeSection } = useAppSelector(selectActiveSection);
 
 	const location = useLocation();
 	const navigate = useNavigate();
 	const hash = location.hash;
 	const isAtHomePage = location.pathname === "/";
-
 
 	const handleClick = () => {
 		if (isAtHomePage) {

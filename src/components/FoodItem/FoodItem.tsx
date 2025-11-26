@@ -1,11 +1,31 @@
-import { useDispatch } from "react-redux";
+import React from "react";
 
+import { useAppDispatch } from "../../hooks/useTypeScriptHook";
 import { addToCart, deleteInCart } from "../../pages/Cart/cartSlice";
 import { assets } from "../../assets/assets";
+
 import "./FoodItem.css";
 
-const FoodItem = ({ id, name, price, description, image, productCount }) => {
-	const dispatch = useDispatch();
+interface IFoodItem {
+	id: string;
+	name: string;
+	category: string;
+	description: string;
+	price: number;
+	image: string;
+	productCount: number;
+}
+
+const FoodItem: React.FC<IFoodItem> = ({
+	id,
+	name,
+	price,
+	description,
+	image,
+	productCount,
+	category,
+}) => {
+	const dispatch = useAppDispatch();
 	return (
 		<div className="food-item">
 			<div className="food-item-img-container">

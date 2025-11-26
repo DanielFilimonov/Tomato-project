@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 
 import Footer from "./components/Footer/Footer";
@@ -9,7 +9,7 @@ import Home from "./pages/Home/Home";
 import ScrollToTop from "./components/utils/ScrollToTop";
 import PlaceOrder from "./pages/PlaceOrder/PlaceOrder";
 
-const App = () => {
+const App: React.FC = () => {
 	const [showLogin, setShowLogin] = useState(false);
 
 	return (

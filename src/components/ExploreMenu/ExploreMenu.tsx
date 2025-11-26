@@ -1,17 +1,24 @@
-import { useDispatch, useSelector } from "react-redux";
-import { useSectionInView } from "../../hooks/useSectionInView";
+import React, { JSX } from "react";
 import classNames from "classnames";
 
+import { useSectionInView } from "../../hooks/useSectionInView";
+import { useAppDispatch, useAppSelector } from "../../hooks/useTypeScriptHook";
 import { filterSet, selectFilters } from "./filtersSlice";
 import { menu_list } from "../../assets/assets";
+
 import "./ExploreMenu.css";
 
-const ExploreMenu = () => {
-	const { ref } = useSectionInView({ sectionName: "menu", threshold: 0.9 });
-	const dispatch = useDispatch();
-	const { activeFilter } = useSelector(selectFilters);
+interface MenuItem {
+	menu_name: string;
+	menu_image: string;
+}
 
-	const rendermenuList = (menuDataArr) => (
+const ExploreMenu: React.FC = () => {
+	const { ref } = useSectionInView({ sectionName: "menu", threshold: 0.9 });
+	const dispatch = useAppDispatch();
+	const { activeFilter } = useAppSelector(selectFilters);
+
+	const rendermenuList = (menuDataArr: MenuItem[]): JSX.Element => (
 		<div className="explore-menu-list">
 			{menuDataArr.map((item, index) => {
 				const imgClass = classNames({
@@ -26,7 +33,7 @@ const ExploreMenu = () => {
 						<img
 							className={imgClass}
 							src={item.menu_image}
-							alt=""
+							alt={item.menu_name}
 						/>
 						<p>{item.menu_name}</p>
 					</div>

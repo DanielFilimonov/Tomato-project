@@ -1,6 +1,7 @@
-import { useSelector, useDispatch } from "react-redux";
+import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 
+import { useAppDispatch, useAppSelector } from "../../hooks/useTypeScriptHook";
 import {
 	removeFromCart,
 	selectCartProducts,
@@ -8,12 +9,12 @@ import {
 } from "./cartSlice";
 import "./Cart.css";
 
-const Cart = () => {
-	const dispatch = useDispatch();
+const Cart: React.FC = () => {
+	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 
-	const cart = useSelector(selectCartProducts);
-	const totalPrice = useSelector(selectTotalAmount);
+	const cart = useAppSelector(selectCartProducts);
+	const totalPrice = useAppSelector(selectTotalAmount);
 
 	if (!Object.keys(cart).length) {
 		return (

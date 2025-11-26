@@ -1,7 +1,9 @@
+import React from "react";
+
 import { useSectionInView } from "../../hooks/useSectionInView";
 import "./Header.css";
 
-const Header = () => {
+const Header: React.FC = () => {
 	const { ref } = useSectionInView({
 		sectionName: "home",
 		threshold: 0.8,

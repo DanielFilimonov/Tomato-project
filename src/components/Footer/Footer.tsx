@@ -1,9 +1,11 @@
-import { useSectionInView } from "../../hooks/useSectionInView";
+import React from "react";
 
+import { useSectionInView } from "../../hooks/useSectionInView";
 import { assets } from "../../assets/assets";
+
 import "./Footer.css";
 
-const Footer = () => {
+const Footer: React.FC = () => {
 	const { ref } = useSectionInView({
 		sectionName: "contact-us",
 		threshold: 0.95,

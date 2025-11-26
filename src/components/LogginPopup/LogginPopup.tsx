@@ -1,9 +1,13 @@
-import { useState } from "react";
+import { JSX, useState } from "react";
 
 import { assets } from "../../assets/assets";
 import "./LogginPopup.css";
 
-const LogginPopup = ({ setShowLogin }) => {
+interface ILogginPopupProps {
+	setShowLogin: (value: boolean) => void;
+}
+
+const LogginPopup = ({ setShowLogin }: ILogginPopupProps): JSX.Element => {
 	const [currState, setCurrState] = useState("Login");
 
 	return (

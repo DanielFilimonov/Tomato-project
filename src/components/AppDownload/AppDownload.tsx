@@ -1,8 +1,9 @@
 import { useSectionInView } from "../../hooks/useSectionInView";
 import { assets } from "../../assets/assets";
 import "./AppDownload.css";
+import React from "react";
 
-const AppDownload = () => {
+const AppDownload: React.FC = () => {
 	const { ref } = useSectionInView({
 		sectionName: "mobile-app",
 		threshold: 0.95,

@@ -1,6 +1,11 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import type { RootState } from "../../store/store";
 
-const initialState = {
+interface FiltersState {
+	activeFilter: string;
+}
+
+const initialState: FiltersState = {
 	activeFilter: "all",
 };
 
@@ -8,7 +13,7 @@ const filtersSlice = createSlice({
 	name: "filters",
 	initialState,
 	reducers: {
-		filterSet: (state, action) => {
+		filterSet: (state, action: PayloadAction<string>) => {
 			if (state.activeFilter === action.payload) {
 				state.activeFilter = "all";
 			} else {
@@ -20,7 +25,7 @@ const filtersSlice = createSlice({
 
 const { actions, reducer } = filtersSlice;
 
-export const selectFilters = (state) => state.filters
+export const selectFilters = (state: RootState) => state.filters
 export const { filterSet } = actions;
 
 export default reducer;

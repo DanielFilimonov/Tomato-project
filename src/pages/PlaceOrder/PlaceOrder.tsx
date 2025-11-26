@@ -1,12 +1,26 @@
-import { useSelector } from "react-redux";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import React from "react";
+import { Formik, Form, Field, ErrorMessage, FormikHelpers } from "formik";
 import * as Yup from "yup";
 
+import { useAppSelector } from "../../hooks/useTypeScriptHook";
 import { selectTotalAmount } from "../Cart/cartSlice";
+
 import "./PlaceOrder.css";
 
-const PlaceOrder = () => {
-	const totalPrice = useSelector(selectTotalAmount);
+interface IOrderFormValues {
+	firstName: string;
+	lastName: string;
+	email: string;
+	street: string;
+	city: string;
+	state: string;
+	zipCode: string;
+	country: string;
+	phone: string;
+}
+
+const PlaceOrder: React.FC = () => {
+	const totalPrice = useAppSelector(selectTotalAmount);
 
 	const orderSchema = Yup.object().shape({
 		firstName: Yup.string()
@@ -36,32 +50,37 @@ const PlaceOrder = () => {
 			.required("Phone is required"),
 	});
 
+	const initialValues: IOrderFormValues = {
+		firstName: "",
+		lastName: "",
+		email: "",
+		street: "",
+		city: "",
+		state: "",
+		zipCode: "",
+		country: "",
+		phone: "",
+	};
+
+	const handleSubmit = (
+		values: IOrderFormValues,
+		{ resetForm }: FormikHelpers<IOrderFormValues>
+	) => {
+		alert("Это демонстрационная версия, оформление доставки недоступно.");
+		resetForm();
+	};
+
 	return (
 		<Formik
-			initialValues={{
-				firstName: "",
-				lastName: "",
-				email: "",
-				street: "",
-				city: "",
-				state: "",
-				zipCode: "",
-				country: "",
-				phone: "",
-			}}
+			initialValues={initialValues}
 			validationSchema={orderSchema}
-			onSubmit={({ resetForm }) => {
-				alert(
-					"Это демонстрационная версия, оформление доставки недоступно."
-				);
-				resetForm();
-			}}
+			onSubmit={handleSubmit}
 		>
 			<Form className="place-order">
 				<div className="place-order-left">
 					<p className="title">Delivery Information</p>
 					<div className="multi-fields">
-						<div class="place-order-field">
+						<div className="place-order-field">
 							<Field
 								name="firstName"
 								type="text"
@@ -73,7 +92,7 @@ const PlaceOrder = () => {
 								className="place-order-error"
 							/>
 						</div>
-						<div class="place-order-field">
+						<div className="place-order-field">
 							<Field
 								name="lastName"
 								type="text"
@@ -86,7 +105,7 @@ const PlaceOrder = () => {
 							/>
 						</div>
 					</div>
-					<div class="place-order-field">
+					<div className="place-order-field">
 						<Field
 							name="email"
 							type="email"
@@ -98,7 +117,7 @@ const PlaceOrder = () => {
 							className="place-order-error"
 						/>
 					</div>
-					<div class="place-order-field">
+					<div className="place-order-field">
 						<Field name="street" type="text" placeholder="Street" />
 						<ErrorMessage
 							name="street"
@@ -107,7 +126,7 @@ const PlaceOrder = () => {
 						/>
 					</div>
 					<div className="multi-fields">
-						<div class="place-order-field">
+						<div className="place-order-field">
 							<Field name="city" type="text" placeholder="City" />
 							<ErrorMessage
 								name="city"
@@ -115,7 +134,7 @@ const PlaceOrder = () => {
 								className="place-order-error"
 							/>
 						</div>
-						<div class="place-order-field">
+						<div className="place-order-field">
 							<Field
 								name="state"
 								type="text"
@@ -129,7 +148,7 @@ const PlaceOrder = () => {
 						</div>
 					</div>
 					<div className="multi-fields">
-						<div class="place-order-field">
+						<div className="place-order-field">
 							<Field
 								name="zipCode"
 								type="text"
@@ -141,7 +160,7 @@ const PlaceOrder = () => {
 								className="place-order-error"
 							/>
 						</div>
-						<div class="place-order-field">
+						<div className="place-order-field">
 							<Field
 								name="country"
 								type="text"
@@ -154,8 +173,8 @@ const PlaceOrder = () => {
 							/>
 						</div>
 					</div>
-					<div class="place-order-field">
-						<Field name="phone" type="phone" placeholder="Phone" />
+					<div className="place-order-field">
+						<Field name="phone" type="text" placeholder="Phone" />
 						<ErrorMessage
 							name="phone"
 							component="p"
@@ -163,6 +182,7 @@ const PlaceOrder = () => {
 						/>
 					</div>
 				</div>
+
 				<div className="place-order-right">
 					<div className="cart-total">
 						<h2>Cart Totals</h2>
