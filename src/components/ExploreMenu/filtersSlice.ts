@@ -1,11 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import type { RootState } from "../../store/store";
 
-interface FiltersState {
+interface IFiltersState {
 	activeFilter: string;
 }
 
-const initialState: FiltersState = {
+const initialState: IFiltersState = {
 	activeFilter: "all",
 };
 

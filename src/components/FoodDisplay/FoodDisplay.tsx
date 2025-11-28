@@ -1,4 +1,4 @@
-import React, { JSX } from "react";
+import React from "react";
 
 import { useAppSelector } from "../../hooks/useTypeScriptHook";
 import { selectFilters } from "../ExploreMenu/filtersSlice";
@@ -9,15 +9,6 @@ import FoodItem from "../FoodItem/FoodItem";
 
 import "./FoodDisplay.css";
 
-interface IFoodList {
-	_id: string;
-	name: string;
-	category: string;
-	description: string;
-	price: number;
-	image: string;
-}
-
 const FoodDisplay: React.FC = () => {
 	const { ref } = useSectionInView({ sectionName: "menu", threshold: 0.2 });
 	const { activeFilter } = useAppSelector(selectFilters);
@@ -27,11 +18,9 @@ const FoodDisplay: React.FC = () => {
 		return cart[id]?.qnty || 0;
 	};
 
-	const foodDisplayListRender = (
-		foodListDataArr: IFoodList[]
-	): JSX.Element => (
+	const foodDisplayListRender = () => (
 		<div className="food-display-list">
-			{foodListDataArr.map(
+			{food_list.map(
 				(item) =>
 					(activeFilter === "all" ||
 						activeFilter === item.category) && (
@@ -39,10 +28,10 @@ const FoodDisplay: React.FC = () => {
 							key={item._id}
 							id={item._id}
 							name={item.name}
-							category={item.category}
 							description={item.description}
 							price={item.price}
 							image={item.image}
+							rating={item.rating}
 							productCount={getProductCount(item._id)}
 						/>
 					)
@@ -53,7 +42,7 @@ const FoodDisplay: React.FC = () => {
 	return (
 		<div className="food-display" ref={ref} id="food-display">
 			<h2>Top dishes near you</h2>
-			{foodDisplayListRender(food_list)}
+			{foodDisplayListRender()}
 		</div>
 	);
 };

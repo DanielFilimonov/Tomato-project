@@ -1,4 +1,4 @@
-import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../../store/store";
 
 interface CartProduct {
@@ -52,15 +52,13 @@ export const { addToCart, deleteInCart, removeFromCart } = actions;
 
 export const selectCartProducts = (state: RootState) => state.cart;
 
-export const selectTotalAmount = createSelector(
-	[selectCartProducts],
-	(cart) => {
-		return cart
-			? Object.values(cart).reduce((total, product) => {
-					return total + product.price * product.qnty;
-			  }, 0)
-			: 0;
-	}
-);
+export const selectTotalAmount = (state: RootState) => {
+	const cart = state.cart;
+	return cart
+		? Object.values(cart).reduce((total, product) => {
+				return total + product.price * product.qnty;
+		  }, 0)
+		: 0;
+};
 
 export default reducer;

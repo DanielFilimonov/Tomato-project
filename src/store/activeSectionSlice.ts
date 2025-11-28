@@ -2,11 +2,11 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "./store";
 
 interface activeSectionState {
-	activeSection: string;
+	activeSection: string | null;
 }
 
 const initialState: activeSectionState = {
-	activeSection: "",
+	activeSection: null,
 };
 
 const activeSectionSlice = createSlice({

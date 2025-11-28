@@ -17,13 +17,13 @@ const App: React.FC = () => {
 			<ScrollToTop />
 			{showLogin ? <LogginPopup setShowLogin={setShowLogin} /> : <></>}
 			<Navbar setShowLogin={setShowLogin} />
-			<div className="app">
+			<main className="app">
 				<Routes>
 					<Route path="/" element={<Home />} />
 					<Route path="/cart" element={<Cart />} />
 					<Route path="/order" element={<PlaceOrder />} />
 				</Routes>
-			</div>
+			</main>
 			<Footer />
 		</>
 	);

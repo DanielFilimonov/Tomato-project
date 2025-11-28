@@ -1,3 +1,9 @@
+.food-item-stars {
+	display: flex;
+	width: 70px;
+	height: 14px;
+}
+
 .food-item {
 	width: 100%;
 	margin: auto;

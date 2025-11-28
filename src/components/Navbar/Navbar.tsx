@@ -62,12 +62,12 @@ const Navbar = ({ setShowLogin }: ILogginPopupProps): JSX.Element => {
 	return (
 		<div className={`navbar-wrapper ${isScrolled ? "shadow" : ""}`}>
 			<div className="app">
-				<div className="navbar">
+				<header className="navbar">
 					<Link to="/">
 						<img
 							onClick={handleClick}
 							src={assets.logo}
-							alt=""
+							alt="TomatoLogo"
 							className="logo"
 						/>{" "}
 					</Link>
@@ -122,7 +122,7 @@ const Navbar = ({ setShowLogin }: ILogginPopupProps): JSX.Element => {
 							sign in
 						</button>
 					</div>
-				</div>
+				</header>
 			</div>
 		</div>
 	);

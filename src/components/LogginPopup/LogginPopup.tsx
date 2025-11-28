@@ -1,4 +1,4 @@
-import { JSX, useState } from "react";
+import { useState } from "react";
 
 import { assets } from "../../assets/assets";
 import "./LogginPopup.css";
@@ -7,7 +7,7 @@ interface ILogginPopupProps {
 	setShowLogin: (value: boolean) => void;
 }
 
-const LogginPopup = ({ setShowLogin }: ILogginPopupProps): JSX.Element => {
+const LogginPopup = ({ setShowLogin }: ILogginPopupProps)=> {
 	const [currState, setCurrState] = useState("Login");
 
 	return (
@@ -18,7 +18,7 @@ const LogginPopup = ({ setShowLogin }: ILogginPopupProps): JSX.Element => {
 					<img
 						onClick={() => setShowLogin(false)}
 						src={assets.cross_icon}
-						alt=""
+						alt="СrossIcon"
 					/>
 				</div>
 				<div className="loggin-popup-inputs">

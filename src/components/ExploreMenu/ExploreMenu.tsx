@@ -1,4 +1,4 @@
-import React, { JSX } from "react";
+import React from "react";
 import classNames from "classnames";
 
 import { useSectionInView } from "../../hooks/useSectionInView";
@@ -8,7 +8,7 @@ import { menu_list } from "../../assets/assets";
 
 import "./ExploreMenu.css";
 
-interface MenuItem {
+interface IMenuItem {
 	menu_name: string;
 	menu_image: string;
 }
@@ -18,9 +18,9 @@ const ExploreMenu: React.FC = () => {
 	const dispatch = useAppDispatch();
 	const { activeFilter } = useAppSelector(selectFilters);
 
-	const rendermenuList = (menuDataArr: MenuItem[]): JSX.Element => (
+	const rendermenuList = () => (
 		<div className="explore-menu-list">
-			{menuDataArr.map((item, index) => {
+			{menu_list.map((item: IMenuItem, index) => {
 				const imgClass = classNames({
 					active: item.menu_name === activeFilter,
 				});
@@ -50,7 +50,7 @@ const ExploreMenu: React.FC = () => {
 				dishes. Our mission is to satisfy your cravings and elevate your
 				dining experience, one delicious meal at a time.
 			</p>
-			{rendermenuList(menu_list)}
+			{rendermenuList()}
 			<hr />
 		</div>
 	);

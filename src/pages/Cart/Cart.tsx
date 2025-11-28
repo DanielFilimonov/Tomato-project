@@ -43,7 +43,7 @@ const Cart: React.FC = () => {
 				{Object.values(cart).map((product) => (
 					<div key={product.id}>
 						<div className="cart-items-title cart-items-item">
-							<img src={product.image} alt="" />
+							<img src={product.image} alt={product.name} />
 							<p>{product.name}</p>
 							<p>${product.price}</p>
 							<p>{product.qnty}</p>

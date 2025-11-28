@@ -19,6 +19,8 @@ interface IOrderFormValues {
 	phone: string;
 }
 
+const DELIVERYFEE = 2
+
 const PlaceOrder: React.FC = () => {
 	const totalPrice = useAppSelector(selectTotalAmount);
 
@@ -194,12 +196,17 @@ const PlaceOrder: React.FC = () => {
 							<hr />
 							<div className="cart-total-details">
 								<p>Delivery Fee</p>
-								<p>${totalPrice === 0 ? 0 : 2}</p>
+								<p>${totalPrice === 0 ? 0 : DELIVERYFEE}</p>
 							</div>
 							<hr />
 							<div className="cart-total-details">
 								<b>Total</b>
-								<b>${totalPrice === 0 ? 0 : totalPrice + 2}</b>
+								<b>
+									$
+									{totalPrice === 0
+										? 0
+										: totalPrice + DELIVERYFEE}
+								</b>
 							</div>
 						</div>
 						<button type="submit">PROCEED TO PAYMENT</button>
