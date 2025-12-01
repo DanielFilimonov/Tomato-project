@@ -2,7 +2,6 @@
  
 ![Static Badge](https://img.shields.io/badge/19.2-gray?logo=react&logoColor=white&label=React&labelColor=blue)
 ![Static Badge](https://img.shields.io/badge/RTK-purple?logo=redux&label=Redux&labelColor=%234B0082)
-![Static Badge](https://img.shields.io/badge/TypeScript-0558fc?logo=TypeScript&logoColor=white)
 ![Static Badge](https://img.shields.io/badge/Router-black)
 ![Static Badge](https://img.shields.io/badge/JavaScript-%23FFFF00?logo=JavaScript&logoColor=white)
 ![Static Badge](https://img.shields.io/badge/HTML-orange)
