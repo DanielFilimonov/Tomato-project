@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import { useSectionInView } from "../../hooks/useSectionInView";
 import "./Header.css";
@@ -21,7 +22,7 @@ const Header: React.FC = () => {
 					elevate your dining experience, one delicious meal at a
 					time.
 				</p>
-				<button>View Menu</button>
+				<Link to="/#menu">View menu</Link>
 			</div>
 		</div>
 	);

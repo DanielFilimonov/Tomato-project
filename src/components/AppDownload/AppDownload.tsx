@@ -21,8 +21,24 @@ const AppDownload: React.FC = () => {
 				and easy orders from the comfort of your home or office.
 			</p>
 			<div className="app-download-platforms">
-				<img src={assets.play_store} alt="PlayStore link" />
-				<img src={assets.app_store} alt="AppStore link" />
+				<img
+					onClick={() =>
+						alert(
+							"Это демонстрационная версия, данная функция недоступна."
+						)
+					}
+					src={assets.play_store}
+					alt="PlayStore link"
+				/>
+				<img
+					onClick={() =>
+						alert(
+							"Это демонстрационная версия, данная функция недоступна."
+						)
+					}
+					src={assets.app_store}
+					alt="AppStore link"
+				/>
 			</div>
 		</div>
 	);

@@ -89,7 +89,16 @@ const Cart: React.FC = () => {
 						<p>If you have a promo code, Enter it here </p>
 						<div className="cart-promocode-input">
 							<input type="text" placeholder="promo code" />
-							<button>Submit</button>
+							<button
+								onClick={() => {
+									alert(
+										"Это демонстрационная версия, промокоды недоступны"
+									);
+								}}
+							>
+								{" "}
+								Submit
+							</button>
 						</div>
 					</div>
 				</div>
